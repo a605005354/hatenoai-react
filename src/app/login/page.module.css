@@ -1,0 +1,124 @@
+/* LoginSignup.module.css - Updated for CSS Modules */
+.container {
+    font-family: 'Merriweather', serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+    background-image: url("/login/background.png");
+    background-size: contain;
+    background-position: 10%;
+}
+
+.switcher {
+    font-family: 'Tangerine', cursive;
+    font-size: 24px;
+    color: #8b572a;
+    background: none;
+    border: none;
+    cursor: pointer;
+    margin: 0 10px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.switcher button {
+    padding: 10px 20px;
+    background-color: #d8c3a5;
+    /* Earthy tone background */
+    color: #3e4e50;
+    /* Dark green/blue, reminiscent of forest shadows */
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+    font-weight: bold;
+    border-radius: 5px;
+    font-family: 'Merriweather', serif;
+    /* A touch of elegance */
+    margin: 0 5px;
+}
+
+
+.switcher button:hover,
+.switcher button.active {
+    background-color: #e4d9c0;
+    /* Lighter, magical glow on hover/active */
+    color: #805e49;
+    /* Darker earth tone for text */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    /* Slight elevation effect */
+}
+
+.active {
+    color: #cda46a;
+    border-bottom: 2px solid #cda46a;
+}
+
+.formHeading {
+    font-family: 'Tangerine', cursive;
+    color: #F5F5DC;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    /* Aligns children vertically */
+    /* Other styles */
+}
+
+.formInput {
+    display: block;
+    background-color: #fffaf0;
+    border: 1px solid #d3c1a5;
+    color: #6e6658;
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.formButton {
+    background-color: #8b572a;
+    color: #fbf8f1;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: 'Merriweather', serif;
+    font-weight: 700;
+}
+
+.errorMessage {
+    color: #ffffff;
+    /* White color for better visibility on dark backgrounds */
+    margin-top: 0.25rem;
+    font-size: 0.875em;
+}
+
+.custom-modal {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.fadeOut {
+    position: fixed; /* or absolute; */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 1rem;
+    background-color: #8b5a2b; /* Wooden brown; adjust as needed */
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+    opacity: 1;
+    animation: fadeOutEffect 3s forwards;
+    }
+    
+    @keyframes fadeOutAnimation {
+      to {
+        opacity: 0;
+        visibility: hidden;
+      }
+    }

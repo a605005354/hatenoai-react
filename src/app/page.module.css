@@ -1,0 +1,78 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    /* gap: 20px; */
+    text-align: center;
+    justify-content:first baseline;
+    height: 80vh;
+    background-image: url("/welcome/welcome.png");
+    background-size:contain;
+    background-position:10%;
+}
+
+.imgContainer{
+    width: 100%;
+    height: 100%;
+}
+
+.img{
+    object-fit: cover;
+    opacity: 90%;
+}
+
+.title {
+    font-family: 'Tangerine', cursive;
+    /* Using the imported font */
+    color: #241206;
+    /* Wood-like color */
+    font-size: 48px;
+    /* Adjust the size as needed */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    /* Optional shadow for depth */
+    margin-top: 30px;
+}
+
+.logo {
+    font-family: 'Tangerine', cursive;
+    /* Using the imported font */
+    color: #241206;
+    /* Wood-like color */
+    font-size: 60px;
+    /* Larger font size for the logo */
+    margin: 20px 0;
+    /* Spacing around the logo */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    /* Optional shadow for depth */
+}
+
+.joinNowButton {
+    background-color: #ff8c00;
+    /* A vibrant green color */
+    color: white;
+    /* White text */
+    padding: 12px 24px;
+    /* Top & Bottom, Left & Right padding */
+    border: none;
+    /* No border */
+    cursor: pointer;
+    /* Cursor changes to pointer to indicate clickable */
+    border-radius: 5px;
+    /* Rounded corners */
+    font-size: 16px;
+    /* Font size */
+    font-weight: bold;
+    /* Make the text bold */
+    text-transform: uppercase;
+    /* Uppercase text */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    /* Subtle shadow for depth */
+    transition: background-color 0.3s ease;
+    /* Smooth transition for hover effect */
+    width: 180px;
+    margin: 20px auto;
+}
+
+.joinNowButton:hover {
+    background-color: #e67e00;
+    /* Darker shade of button color on hover */
+}

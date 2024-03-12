@@ -1,0 +1,21 @@
+.fadeOut {
+  position: fixed; /* or absolute; */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 1rem;
+  background-color: #8b5a2b; /* Wooden brown; adjust as needed */
+  color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+  opacity: 1;
+  animation: fadeOutEffect 3s forwards;
+  }
+  
+  @keyframes fadeOutAnimation {
+    to {
+      opacity: 0;
+      visibility: hidden;
+    }
+  }
