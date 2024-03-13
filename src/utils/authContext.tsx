@@ -29,19 +29,25 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   useEffect(() => {
-    const token = localStorage.getItem('token');
-    // Here, you can also add logic to validate the token's integrity or expiration
-    validateJwt(token).then(response => {
-      setIsAuthenticated(true);
-    }).catch(error => {
-      setIsAuthenticated(false);
-    })
+    if (typeof window !== "undefined") {
+      const token = localStorage.getItem('token');
+      // Here, you can also add logic to validate the token's integrity or expiration
+      if (token) {
+        // Wrap the token in an object to match the expected parameter structure
+        validateJwt({ token }).then(response => {
+          setIsAuthenticated(true);
+        }).catch(error => {
+          setIsAuthenticated(false);
+        });
+      }
+    }
   }, []);
 
   const loginAuth = (jwtToken: string) => {
-    localStorage.setItem('token', jwtToken)
-    console.log('auth token is' + jwtToken)
-    setIsAuthenticated(true);
+    if (typeof window !== "undefined") {
+      localStorage.setItem('token', jwtToken)
+      setIsAuthenticated(true);
+    }
   };
 
   const logoutAuth = () => {

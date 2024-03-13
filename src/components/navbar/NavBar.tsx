@@ -1,5 +1,5 @@
 "use client"
-import React, { useState } from 'react'
+import React, { useState,useEffect } from 'react'
 import styles from './navbar.module.css'
 import Link from 'next/link'
 import { useAuth } from '@/utils/authContext'
@@ -25,8 +25,15 @@ const links = [
 function NavBar() {
   const [showDropdown, setShowDropdown] = useState(false);
   const toggleDropdown = () => setShowDropdown(!showDropdown);
-  const username = localStorage.getItem('username')
-  const {logoutAuth, isAuthenticated} = useAuth()
+  const [username, setUsername] = useState('');
+
+  useEffect(() => {
+    const storedUsername = localStorage.getItem('username')
+    if (storedUsername) {
+      setUsername(storedUsername);
+    }
+  }, [])
+  const {isAuthenticated} = useAuth()
 
   return (
     <div className={styles.container}>

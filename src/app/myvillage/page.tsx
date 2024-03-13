@@ -28,7 +28,7 @@ const MyVillage = () => {
   if (!isAuthenticated) {
     return (
       <div >
-        {showRedirectMessage && <div className={styles.fadeOut}>You're not logged in, redirecting to login...</div>}
+        {showRedirectMessage && <div className={styles.fadeOut}>{'You\'re not logged in, redirecting to login...'}</div>}
       </div>
     )
   }

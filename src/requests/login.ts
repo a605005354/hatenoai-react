@@ -1,6 +1,6 @@
 import { request } from "@/utils/api";
 
-export function signup(data){
+export function signup(data: {username?:string, email:string, password:string} ){
     return request({
         url: '/api/v1/admin/signup',
         method: 'post',
@@ -8,7 +8,7 @@ export function signup(data){
     });
 }
 
-export function loginUser(data){
+export function loginUser(data: {email:string, password:string}){
     return request({
         url: '/api/v1/admin/login',
         method: 'post',
@@ -16,7 +16,7 @@ export function loginUser(data){
     });
 }
 
-export function validateJwt(data){
+export function validateJwt(data: {token:string}){
     return request({
         url: '/api/v1/admin/validateJwt',
         method: 'post',

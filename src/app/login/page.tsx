@@ -11,10 +11,15 @@ import { saveAuthDetails } from '@/utils/authService';
 
 function Login() {
     const [isSignup, setIsSignup] = useState(true);
-    const [showModal, setShowModal] = useState(false); // State to control modal visibility
     const router = useRouter()
     const { loginAuth } = useAuth();
     const [redirectTo, setRedirectTo] = useState(false)
+
+    interface FormValues{
+        username?:string;
+        email:string;
+        password:string;
+    }
 
     const validationSchema = Yup.object().shape({
         username: isSignup ? Yup.string().required('Username is required') : Yup.string(),
@@ -22,13 +27,14 @@ function Login() {
         password: Yup.string().min(6, 'Must be at least 6 characters').required('Password is required'),
     });
 
-    const handleSubmit = async (values, { setSubmitting }) => {
+    const handleSubmit = async (values:FormValues, { setSubmitting }:{setSubmitting: (isSubmitting: boolean) => void}) => {
         const { username, email, password } = values;
         const data = isSignup ? { username, email, password } : { email, password };
 
         try {
             if (isSignup) {
                 signup(data).then(response => {
+
                     redirecting(response)
                 }).catch(error => {
                     console.log(error)
@@ -43,13 +49,14 @@ function Login() {
                 })
             }
         } catch (error) {
+            const message = (error instanceof Error) ? error.message : 'An error occurred';
             console.error('Unexpected error:', error);
-            alert(error.message || 'An error occurred');
+            alert(message || 'An error occurred');
         }
         setSubmitting(false);
     };
 
-    const redirecting = (response) => {
+    const redirecting = (response: { data: any; }) => {
         const userInfo = response.data
         loginAuth(userInfo.token)
         saveAuthDetails(userInfo)
@@ -62,7 +69,7 @@ function Login() {
     if (redirectTo) {
         return (
             <div >
-                <div className={styles.fadeOut}>You're successfully logged in. Redirecting to MyVillage...</div>
+                <div className={styles.fadeOut}>{'You\'re successfully logged in. Redirecting to MyVillage...'}</div>
             </div>
         )
     }
