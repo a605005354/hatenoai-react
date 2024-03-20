@@ -53,34 +53,6 @@
   position: relative;
 }
 
-.usernameBtn {
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 0; /* Adjust based on your navbar height */
-  margin-right: 20px; /* Space from the right edge or next element */
-  font-family: 'Merriweather', serif;
-  /* Using the imported font */
-  color: #5a4a42;
-  /* Dark brown color for text, adjust as needed */
-  text-decoration: none;
-  /* Remove underline from links */
-  margin: 0 15px;
-  /* Spacing between menu items */
-  font-size: 18px;
-  /* Size of the menu items */
-  font-weight: 700;
-  /* Font weight for a bit of emphasis */
-  transition: color 0.3s ease;
-  /* Smooth transition for hover effect */
-}
-
-.usernameBtn::after {
-  content: '▼'; /* Simple downward arrow */
-  font-size: 0.8em; /* Smaller size for the arrow */
-  margin-left: 5px; /* Small space between username and arrow */
-}
-
 .dropdown {
   position: absolute;
   right: 0;
@@ -96,15 +68,4 @@
   display: block; /* Show dropdown */
 }
 
-.logoutBtn {
-  background: none;
-  border: none;
-  padding: 10px 20px;
-  display: block; /* Dropdown item as block */
-  width: 100%; /* Full width */
-  text-align: left; /* Align text to the left */
-}
 
-.logoutBtn:hover {
-  background-color: #f0f0f0; /* Slight background on hover, adjust as needed */
-}

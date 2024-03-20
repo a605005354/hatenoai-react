@@ -12,7 +12,7 @@ import { saveAuthDetails } from '@/utils/authService';
 function Login() {
     const [isSignup, setIsSignup] = useState(true);
     const router = useRouter()
-    const { loginAuth } = useAuth();
+    const { loginAuth, isAuthenticated} = useAuth();
     const [redirectTo, setRedirectTo] = useState(false)
 
     interface FormValues{
@@ -55,6 +55,15 @@ function Login() {
         }
         setSubmitting(false);
     };
+
+    useEffect( ()=> {
+        if (isAuthenticated) {
+            setRedirectTo(true)
+            setTimeout(() => {
+                router.push('/myvillage'); // Redirect after 3 seconds
+            }, 3000); // 3000 milliseconds = 3 seconds
+        }
+    })
 
     const redirecting = (response: { data: any; }) => {
         const userInfo = response.data
@@ -106,12 +115,6 @@ function Login() {
                     </Form>
                 )}
             </Formik>
-            {/* <Modal className="custom-modal" show={showModal} onHide={() => setShowModal(false)}>
-                <Modal.Header closeButton>
-                    <Modal.Title>Success</Modal.Title>
-                </Modal.Header>
-                <Modal.Body>You're successfully logged in. Redirecting to MyVillage...</Modal.Body>
-            </Modal> */}
         </div>
     );
 }

@@ -2,6 +2,7 @@
 import axios, {Method} from 'axios';
 
 const BASE_URL = 'http://localhost:8081';
+const PROD_URL = 'https://hatenoai-java.onrender.com:443'
 
 interface RequestParams {
   url: string;
@@ -9,22 +10,12 @@ interface RequestParams {
   data?: any;
 }
 
-// // Create an Axios instance with base configurations
-// const api = axios.create({
-//   baseURL: 'http://localhost:8081', // Your backend base URL
-//   headers: {
-//     'Content-Type': 'application/json',
-//     // Add any other headers here
-//   },
-//   // Add any other Axios configurations here
-// });
-
 // Function to handle making API requests
 export const request = async ({ url, method, data }: RequestParams) => {
   try {
     const response = await axios({
       method,
-      url: `${BASE_URL}${url}`,
+      url: `${PROD_URL}${url}`,
       data,
       headers: {
         'Content-Type':'application/json',

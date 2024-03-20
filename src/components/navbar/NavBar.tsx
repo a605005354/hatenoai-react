@@ -1,5 +1,5 @@
 "use client"
-import React, { useState,useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import styles from './navbar.module.css'
 import Link from 'next/link'
 import { useAuth } from '@/utils/authContext'
@@ -23,9 +23,9 @@ const links = [
 ]
 
 function NavBar() {
-  const [showDropdown, setShowDropdown] = useState(false);
-  const toggleDropdown = () => setShowDropdown(!showDropdown);
   const [username, setUsername] = useState('');
+  const { isAuthenticated, logoutAuth } = useAuth();
+  const [showDropdown, setShowDropdown] = useState(false);
 
   useEffect(() => {
     const storedUsername = localStorage.getItem('username')
@@ -33,7 +33,11 @@ function NavBar() {
       setUsername(storedUsername);
     }
   }, [])
-  const {isAuthenticated} = useAuth()
+
+  const handleLogout = () => {
+    logoutAuth();
+    setShowDropdown(false);
+  };
 
   return (
     <div className={styles.container}>
@@ -45,15 +49,9 @@ function NavBar() {
           <Link className={styles.link} key={link.id} href={link.url}>{link.title}</Link>
         ))}
         {isAuthenticated && (
-          <div className={styles.userSection} onMouseLeave={() => setShowDropdown(false)}>
-            <button className={styles.usernameBtn} onClick={toggleDropdown}>
-              {username}
-            </button>
-            {showDropdown && (
-              <div className={`${styles.dropdown} ${showDropdown ? 'show' : ''}`}>
-                {/* <button onClick={logoutAuth} className={styles.logoutBtn}>Log Out</button> */}
-              </div>
-            )}
+          <div className={styles.userSection}>
+            <Link className={styles.link} href={"/myvillage"}>{username}</Link>
+            <Link className={styles.link} onClick={handleLogout} href={"/"}>Log Out</Link>
           </div>
         )}
       </div>
@@ -62,3 +60,4 @@ function NavBar() {
 }
 
 export default NavBar
+
