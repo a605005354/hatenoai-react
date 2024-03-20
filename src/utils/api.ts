@@ -2,7 +2,7 @@
 import axios, {Method} from 'axios';
 
 const BASE_URL = 'http://localhost:8081';
-const PROD_URL = 'https://hatenoai-java.onrender.com:443'
+const PROD_URL = 'https://hatenoai-java.onrender.com'
 
 interface RequestParams {
   url: string;
